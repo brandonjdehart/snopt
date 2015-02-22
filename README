@@ -1,0 +1,3 @@
+In order to make use of this repository, you will need to get a copy of the SNOPT trial version library mex file for your platform from http://ccom.ucsd.edu/~optimizers/downloads.php
+
+The mex file you acquire can either be put directly into the mfiles directory, or can be put in the same directory as the snopt Makefile and it will be copied to the mfiles folder at build time.
