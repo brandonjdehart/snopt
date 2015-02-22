@@ -17,11 +17,7 @@ ifeq "$(BUILD_TYPE)" ""
 BUILD_TYPE="Release"
 endif
 
-all: mfiles/snoptmex.* mfiles/README $(BUILD_PREFIX)/matlab/addpath_snopt.m $(BUILD_PREFIX)/matlab/rmpath_snopt.m
-
-mfiles/README :
-	echo "Writing a fake README to be recognized as studentsnopt in Drake"
-	echo "studentVersions" > mfiles/README
+all: mfiles/snoptmex.* $(BUILD_PREFIX)/matlab/addpath_snopt.m $(BUILD_PREFIX)/matlab/rmpath_snopt.m
 
 mfiles/snoptmex.* :
 	if [ -e snoptmex.* ]; then echo "Moving the mex library file into $(PWD)/mfiles" && mv snoptmex.* mfiles; else echo "ERROR: No Snopt mex library found. Please place a snoptmex library file in $(PWD) or $(PWD)/mfiles" && exit 1; fi;
@@ -47,7 +43,6 @@ $(BUILD_PREFIX)/matlab/rmpath_snopt.m :
 		> $(BUILD_PREFIX)/matlab/rmpath_snopt.m
 
 clean:
-	-if [ -e mfiles/README ]; then echo "Deleting mfiles/README" && rm mfiles/README; fi
 	-if [ -e $(BUILD_PREFIX)/matlab/addpath_snopt.m ]; then echo "Deleting $(BUILD_PREFIX)/matlab/addpath_snopt.m" && rm $(BUILD_PREFIX)/matlab/addpath_snopt.m; fi
 	-if [ -e $(BUILD_PREFIX)/matlab/rmpath_snopt.m ]; then echo "Deleting $(BUILD_PREFIX)/matlab/rmpath_snopt.m" && rm $(BUILD_PREFIX)/matlab/rmpath_snopt.m; fi
 

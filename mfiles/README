@@ -1,0 +1,3 @@
+studentVersions
+
+This file must contain the above string so that Drake recognizes the library as the student version of snopt.
